@@ -5,16 +5,29 @@ import { app, BrowserWindow } from 'electron';
 let mainWindow;
 
 const createWindow = () => {
+  if (process.argv.length > 1) {
+    const arg = process.argv[1];
+    // The /p option tells us to display the screen saver in the tiny preview window in the Screen Saver Settings dialog.
+    if (arg === '/p') {
+      return app.quit();
+    }
+    
+    if (/^\/[sc]/i.test(process.argv[1])) {
+      electron.dialog.showMessageBox({ message: 'This screen saver has no options that you can set.', buttons: ['OK'] });
+      return app.quit();
+    }
+  }
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    //titleBarStyle: 'hidden'
+    titleBarStyle: 'hidden'
   });
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
-  //mainWindow.setMenu(null);
+  mainWindow.setMenu(null);
+  mainWindow.setFullScreen(true);
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
