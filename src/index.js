@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, screen } from 'electron';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -18,10 +18,13 @@ const createWindow = () => {
     }
   }
   // Create the browser window.
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     titleBarStyle: 'hidden'
+    width,
+    height,
   });
 
   // and load the index.html of the app.
