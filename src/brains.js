@@ -22,36 +22,27 @@
     //  1:decide random direction to travel
     const trueFalse = () => Math.round(Math.random());
     const getStep = isReverse => (Math.round(Math.random() * 9) + 1) * (isReverse ? -1 : 1);
-
     const goToBounds = (stepX, stepY) => {
-        let goAgain = true;
         x += stepX;
         if (x <= bounds.left) {
             x = bounds.left;
-            goAgain = false;
+            stepX = getStep(false);
         } else if (x >= bounds.right) {
-            goAgain = false;
+            x = bounds.right;
+            stepX = getStep(true);
         }
         y += stepY;
         if (y <= bounds.top) {
             y = bounds.top;
-            goAgain = false;
+            stepY = getStep(false);
         } else if (y >= bounds.bottom) {
             y = bounds.bottom;
-            goAgain = false;
+            stepY = getStep(true);
         }
         logo.style.top = y;
         logo.style.left = x;
-        return goAgain && requestAnimationFrame(() => goToBounds(stepX, stepY));
+        return requestAnimationFrame(() => goToBounds(stepX, stepY));
     };
 
     goToBounds(getStep(trueFalse()), getStep(trueFalse()));
-
-
-    //  2:go to bounds
-
-    //  3:decide random counter direction
-
-    //  4:GOTO:2
-
 })();
