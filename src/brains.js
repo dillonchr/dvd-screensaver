@@ -39,17 +39,18 @@
         return requestAnimationFrame(() => goToBounds(stepX, stepY));
     };
 
-    setInterval(shuffleColor, 5000);
-
+    //  keep track of screen size in case your displays change
     window.addEventListener('resize', () => {
         bounds.bottom = window.innerHeight - h;
         bounds.right = window.innerWidth - w;
     });
 
+    //  be ready to spring back to the desktop
     window.addEventListener('keydown', window.close);
     window.addEventListener('mousemove', window.close);
     window.addEventListener('mousedown', window.close);
 
     //  kick off the goodness
     goToBounds(getStep(trueFalse()), getStep(trueFalse()));
+    setInterval(shuffleColor, 5000);
 })();
