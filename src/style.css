@@ -1,5 +1,8 @@
 body {
     background-color: black;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
 }
 
 #dvdlogo {
