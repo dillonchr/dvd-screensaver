@@ -1,0 +1,10 @@
+body {
+    background-color: black;
+}
+
+#dvdlogo {
+    fill: white;
+    height: 130px;
+    position: absolute;
+    width: 210px;
+}
