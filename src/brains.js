@@ -23,6 +23,7 @@
     const trueFalse = () => Math.round(Math.random());
     //  returns step distance in px sometimes inverted to bounce up/left
     const getStep = isReverse => (Math.round(Math.random() * 5) + 2) * (isReverse ? -1 : 1);
+    const shuffleColor = () => logo.style.fill = `#${((1 << 24) * Math.random() | 0).toString(16)}`;
     //  endless function that keeps bouncing the svg between all four boundaries
     const goToBounds = (stepX, stepY) => {
         x += stepX;
@@ -37,6 +38,8 @@
         logo.style.left = x;
         return requestAnimationFrame(() => goToBounds(stepX, stepY));
     };
+
+    setInterval(shuffleColor, 5000);
 
     window.addEventListener('resize', () => {
         bounds.bottom = window.innerHeight - h;

@@ -20,11 +20,9 @@ const createWindow = () => {
   // Create the browser window.
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    titleBarStyle: 'hidden'
     width,
     height,
+    titleBarStyle: 'hidden'
   });
 
   // and load the index.html of the app.
