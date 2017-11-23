@@ -15,11 +15,6 @@
     let x = size.w - w >> 1;
     let y = size.h - h >> 1;
 
-    //  0:start in the center
-    logo.style.top = y;
-    logo.style.left = x;
-
-    //  1:decide random direction to travel
     const trueFalse = () => Math.round(Math.random());
     const getStep = isReverse => (Math.round(Math.random() * 9) + 1) * (isReverse ? -1 : 1);
     const goToBounds = (stepX, stepY) => {
